@@ -2,6 +2,8 @@
 A simple auto-clicker tool developed in **C#** using **Visual Studio**.  
 It allows you to automate mouse clicks with customizable settings, ideal for repetitive tasks that require precise and consistent clicking.
 
+Status: In development
+
 ## Features
 
 - Automates mouse clicks repeatedly.
