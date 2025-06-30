@@ -1,0 +1,48 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Propietario\\source\\repos\\AutoClicker\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3135AECA-6323-4031-A39B-4128A647D2AE}|AutoClicker\\AutoClicker.csproj|c:\\users\\propietario\\source\\repos\\autoclicker\\autoclicker\\autoclicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{3135AECA-6323-4031-A39B-4128A647D2AE}|AutoClicker\\AutoClicker.csproj|solutionrelative:autoclicker\\autoclicker.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AutoClicker.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Propietario\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.cs",
+              "RelativeDocumentMoniker": "AutoClicker\\AutoClicker.cs",
+              "ToolTip": "C:\\Users\\Propietario\\source\\repos\\AutoClicker\\AutoClicker\\AutoClicker.cs [Dise\u00F1o]",
+              "RelativeToolTip": "AutoClicker\\AutoClicker.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-30T21:06:35.378Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
