@@ -6,6 +6,7 @@ namespace AutoClicker
     public partial class AutoClicker : Form
     {
         private static System.Timers.Timer aTimer;
+        private bool isDoubleClick = false;
         public AutoClicker()
         {
             InitializeComponent();
@@ -50,15 +51,25 @@ namespace AutoClicker
             aTimer.AutoReset = true;
             aTimer.Enabled = true;
         }
-        private static void LeftClick(Object source, ElapsedEventArgs e)
+        private void LeftClick(Object source, ElapsedEventArgs e)
         {
             // Simulate left click
             mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+            if (isDoubleClick)
+            {
+                Thread.Sleep(50);
+                mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+            }
         }
-        private static void RightClick(Object source, ElapsedEventArgs e)
+        private void RightClick(Object source, ElapsedEventArgs e)
         {
             // Simulate right click
             mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+            if (isDoubleClick)
+            {
+                Thread.Sleep(50);
+                mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+            }
         }
         public int CalculateMsClickRate()
         {
@@ -78,13 +89,28 @@ namespace AutoClicker
         {
             string option = comboMouseButton.SelectedItem.ToString();
 
-            if(option == "Left")
+            if (option == "Left")
             {
                 aTimer.Elapsed += LeftClick;
             }
-            else{
+            else
+            {
                 aTimer.Elapsed += RightClick;
             }
+        }
+        public void ChooseTypeOfClick()
+        {
+            string option = comboClickType.SelectedItem.ToString();
+
+            if (option == "Single")
+            {
+                isDoubleClick = false;
+            }
+            else
+            {
+                isDoubleClick = true;
+            }
+
         }
 
         public void ClickerActivated()
@@ -104,6 +130,22 @@ namespace AutoClicker
             containerClickIntervals.Enabled = true;
             containerClickOptions.Enabled = true;
             containerClickRepeat.Enabled = true;
+        }
+
+        private void comboClickType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboClickType.SelectedIndex == 1)
+            {
+                comboMouseButton.SelectedIndex = 0;
+            }
+        }
+
+        private void comboMouseButton_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboMouseButton.SelectedIndex == 1)
+            {
+                comboClickType.SelectedIndex = 0;
+            }
         }
     }
 }

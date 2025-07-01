@@ -253,6 +253,7 @@
             comboClickType.Name = "comboClickType";
             comboClickType.Size = new Size(130, 28);
             comboClickType.TabIndex = 5;
+            comboClickType.SelectedIndexChanged += comboClickType_SelectedIndexChanged;
             // 
             // comboMouseButton
             // 
@@ -263,6 +264,7 @@
             comboMouseButton.Name = "comboMouseButton";
             comboMouseButton.Size = new Size(130, 28);
             comboMouseButton.TabIndex = 4;
+            comboMouseButton.SelectedIndexChanged += comboMouseButton_SelectedIndexChanged;
             // 
             // label7
             // 
