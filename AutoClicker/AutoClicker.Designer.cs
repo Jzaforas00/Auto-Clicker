@@ -41,15 +41,15 @@
             btnStop = new Button();
             btnChangeKey = new Button();
             containerClickRepeat = new GroupBox();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
+            rdRepeatIndefinitely = new RadioButton();
+            rdRepeat = new RadioButton();
             label5 = new Label();
             numericUpDown1 = new NumericUpDown();
             containerClickOptions = new GroupBox();
+            comboClickType = new ComboBox();
+            comboMouseButton = new ComboBox();
             label7 = new Label();
             label6 = new Label();
-            comboMouseButton = new ComboBox();
-            comboClickType = new ComboBox();
             containerClickIntervals.SuspendLayout();
             containerClickRepeat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
@@ -147,35 +147,39 @@
             // 
             // btnStart
             // 
-            btnStart.Location = new Point(69, 373);
+            btnStart.Location = new Point(56, 258);
             btnStart.Name = "btnStart";
             btnStart.Size = new Size(163, 56);
             btnStart.TabIndex = 1;
             btnStart.Text = "Start (F6)";
             btnStart.UseVisualStyleBackColor = true;
+            btnStart.Click += btnStart_Click;
             // 
             // btnStop
             // 
-            btnStop.Location = new Point(247, 373);
+            btnStop.Enabled = false;
+            btnStop.Location = new Point(234, 258);
             btnStop.Name = "btnStop";
             btnStop.Size = new Size(163, 56);
             btnStop.TabIndex = 2;
             btnStop.Text = "Stop (F6)";
             btnStop.UseVisualStyleBackColor = true;
+            btnStop.Click += btnStop_Click;
             // 
             // btnChangeKey
             // 
-            btnChangeKey.Location = new Point(425, 373);
+            btnChangeKey.Location = new Point(412, 258);
             btnChangeKey.Name = "btnChangeKey";
             btnChangeKey.Size = new Size(163, 56);
             btnChangeKey.TabIndex = 3;
             btnChangeKey.Text = "Change Hotkey";
             btnChangeKey.UseVisualStyleBackColor = true;
+            btnChangeKey.Click += btnChangeKey_Click;
             // 
             // containerClickRepeat
             // 
-            containerClickRepeat.Controls.Add(radioButton2);
-            containerClickRepeat.Controls.Add(radioButton1);
+            containerClickRepeat.Controls.Add(rdRepeatIndefinitely);
+            containerClickRepeat.Controls.Add(rdRepeat);
             containerClickRepeat.Controls.Add(label5);
             containerClickRepeat.Controls.Add(numericUpDown1);
             containerClickRepeat.Location = new Point(12, 102);
@@ -185,27 +189,27 @@
             containerClickRepeat.TabStop = false;
             containerClickRepeat.Text = "Click Repeat";
             // 
-            // radioButton2
+            // rdRepeatIndefinitely
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(48, 75);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(155, 24);
-            radioButton2.TabIndex = 3;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Repeat Indefinitely";
-            radioButton2.UseVisualStyleBackColor = true;
+            rdRepeatIndefinitely.AutoSize = true;
+            rdRepeatIndefinitely.Location = new Point(48, 75);
+            rdRepeatIndefinitely.Name = "rdRepeatIndefinitely";
+            rdRepeatIndefinitely.Size = new Size(155, 24);
+            rdRepeatIndefinitely.TabIndex = 3;
+            rdRepeatIndefinitely.TabStop = true;
+            rdRepeatIndefinitely.Text = "Repeat Indefinitely";
+            rdRepeatIndefinitely.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdRepeat
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(48, 37);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(77, 24);
-            radioButton1.TabIndex = 2;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Repeat";
-            radioButton1.UseVisualStyleBackColor = true;
+            rdRepeat.AutoSize = true;
+            rdRepeat.Location = new Point(48, 37);
+            rdRepeat.Name = "rdRepeat";
+            rdRepeat.Size = new Size(77, 24);
+            rdRepeat.TabIndex = 2;
+            rdRepeat.TabStop = true;
+            rdRepeat.Text = "Repeat";
+            rdRepeat.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -219,10 +223,13 @@
             // numericUpDown1
             // 
             numericUpDown1.Location = new Point(139, 37);
+            numericUpDown1.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDown1.Name = "numericUpDown1";
             numericUpDown1.Size = new Size(71, 27);
             numericUpDown1.TabIndex = 0;
             numericUpDown1.TextAlign = HorizontalAlignment.Center;
+            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // containerClickOptions
             // 
@@ -236,6 +243,26 @@
             containerClickOptions.TabIndex = 6;
             containerClickOptions.TabStop = false;
             containerClickOptions.Text = "Click Options";
+            // 
+            // comboClickType
+            // 
+            comboClickType.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboClickType.FormattingEnabled = true;
+            comboClickType.Items.AddRange(new object[] { "Single", "Double" });
+            comboClickType.Location = new Point(130, 74);
+            comboClickType.Name = "comboClickType";
+            comboClickType.Size = new Size(130, 28);
+            comboClickType.TabIndex = 5;
+            // 
+            // comboMouseButton
+            // 
+            comboMouseButton.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboMouseButton.FormattingEnabled = true;
+            comboMouseButton.Items.AddRange(new object[] { "Left", "Right" });
+            comboMouseButton.Location = new Point(130, 36);
+            comboMouseButton.Name = "comboMouseButton";
+            comboMouseButton.Size = new Size(130, 28);
+            comboMouseButton.TabIndex = 4;
             // 
             // label7
             // 
@@ -255,31 +282,11 @@
             label6.TabIndex = 2;
             label6.Text = "Mouse button:";
             // 
-            // comboMouseButton
-            // 
-            comboMouseButton.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboMouseButton.FormattingEnabled = true;
-            comboMouseButton.Items.AddRange(new object[] { "Left", "Right" });
-            comboMouseButton.Location = new Point(130, 36);
-            comboMouseButton.Name = "comboMouseButton";
-            comboMouseButton.Size = new Size(130, 28);
-            comboMouseButton.TabIndex = 4;
-            // 
-            // comboClickType
-            // 
-            comboClickType.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboClickType.FormattingEnabled = true;
-            comboClickType.Items.AddRange(new object[] { "Single", "Double" });
-            comboClickType.Location = new Point(130, 74);
-            comboClickType.Name = "comboClickType";
-            comboClickType.Size = new Size(130, 28);
-            comboClickType.TabIndex = 5;
-            // 
             // AutoClicker
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(632, 450);
+            ClientSize = new Size(632, 354);
             Controls.Add(containerClickOptions);
             Controls.Add(containerClickRepeat);
             Controls.Add(btnChangeKey);
@@ -317,8 +324,8 @@
         private TextBox fieldMilisecond;
         private GroupBox containerClickRepeat;
         private GroupBox containerClickOptions;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
+        private RadioButton rdRepeatIndefinitely;
+        private RadioButton rdRepeat;
         private Label label5;
         private NumericUpDown numericUpDown1;
         private Label label6;

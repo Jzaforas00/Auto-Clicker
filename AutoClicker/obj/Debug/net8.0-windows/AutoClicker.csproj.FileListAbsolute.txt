@@ -14,3 +14,4 @@ C:\Users\Propietario\source\repos\AutoClicker\AutoClicker\obj\Debug\net8.0-windo
 C:\Users\Propietario\source\repos\AutoClicker\AutoClicker\obj\Debug\net8.0-windows\AutoClicker.pdb
 C:\Users\Propietario\source\repos\AutoClicker\AutoClicker\obj\Debug\net8.0-windows\AutoClicker.genruntimeconfig.cache
 C:\Users\Propietario\source\repos\AutoClicker\AutoClicker\obj\Debug\net8.0-windows\ref\AutoClicker.dll
+C:\Users\Propietario\source\repos\AutoClicker\AutoClicker\obj\Debug\net8.0-windows\AutoClicker.sourcelink.json
