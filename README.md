@@ -6,12 +6,12 @@ Status: Completed
 
 ## Features
 
-- Automates mouse clicks repeatedly. ✅
-- Allows setting the time interval between clicks (hours, minutes, seconds, milliseconds). ✅
-- Can be started or stopped using the **Start/Stop** button or a configurable hotkey (default: **F6**). ✅
-- Supports repeating clicks infinitely until manually stopped, or a specified number of times. ✅
-- Allows choosing between the **left** or **right** mouse button. ✅
-- Supports **single** or **double** click options. ✅
+- Automates mouse clicks repeatedly.
+- Allows setting the time interval between clicks (hours, minutes, seconds, milliseconds).
+- Can be started or stopped using the **Start/Stop** button or a configurable hotkey (default: **F6**).
+- Supports repeating clicks infinitely until manually stopped, or a specified number of times.
+- Allows choosing between the **left** or **right** mouse button.
+- Supports **single** or **double** click options.
 
 ## Technologies
 - **Language:** C#
