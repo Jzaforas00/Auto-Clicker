@@ -192,6 +192,7 @@
             // rdRepeatIndefinitely
             // 
             rdRepeatIndefinitely.AutoSize = true;
+            rdRepeatIndefinitely.Checked = true;
             rdRepeatIndefinitely.Location = new Point(48, 75);
             rdRepeatIndefinitely.Name = "rdRepeatIndefinitely";
             rdRepeatIndefinitely.Size = new Size(155, 24);
@@ -207,7 +208,6 @@
             rdRepeat.Name = "rdRepeat";
             rdRepeat.Size = new Size(77, 24);
             rdRepeat.TabIndex = 2;
-            rdRepeat.TabStop = true;
             rdRepeat.Text = "Repeat";
             rdRepeat.UseVisualStyleBackColor = true;
             // 

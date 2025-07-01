@@ -1,5 +1,6 @@
 using System.Timers;
 using System.Runtime.InteropServices;
+using Gma.System.MouseKeyHook;
 
 namespace AutoClicker
 {
@@ -9,12 +10,21 @@ namespace AutoClicker
         private bool isDoubleClick = false;
         private int clickCount = 0;
         private int maxClicks = -1;
+
+        private IKeyboardMouseEvents globalHook;
+        private Keys hotkey = Keys.F6;
+        private bool waitingForHotkey = false;
+
         public AutoClicker()
         {
             InitializeComponent();
 
             comboClickType.SelectedIndex = 0;
             comboMouseButton.SelectedIndex = 0;
+
+            btnChangeKey.Text = $"Change Hotckey: {hotkey}";
+
+            SubscribeGlobalHook();
         }
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, CallingConvention = CallingConvention.StdCall)]
@@ -42,8 +52,57 @@ namespace AutoClicker
         }
         private void btnChangeKey_Click(object sender, EventArgs e)
         {
-
+            waitingForHotkey = true;
+            btnChangeKey.Text = "Pres a key...";
         }
+
+        private void SubscribeGlobalHook()
+        {
+            globalHook = Hook.GlobalEvents();
+            globalHook.KeyDown += GlobalHook_KeyDown;
+        }
+
+        private void UnsubscribeGlobalHook()
+        {
+            if (globalHook != null)
+            {
+                globalHook.KeyDown -= GlobalHook_KeyDown;
+                globalHook.Dispose();
+                globalHook = null;
+            }
+        }
+        private void GlobalHook_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (waitingForHotkey)
+            {
+                hotkey = e.KeyCode;
+                waitingForHotkey = false;
+                btnChangeKey.Text = $"Tecla actual: {hotkey}";
+
+                e.Handled = true;
+                return;
+            }
+
+            if (e.KeyCode == hotkey)
+            {
+                if (btnStart.Enabled)
+                {
+                    btnStart.PerformClick();
+                }
+                else
+                {
+                    btnStop.PerformClick();
+                }
+                e.Handled = true;
+            }
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            UnsubscribeGlobalHook();
+            base.OnFormClosing(e);
+        }
+
         private void StartClicker()
         {
             int rate = CalculateMsClickRate();
@@ -64,6 +123,7 @@ namespace AutoClicker
             aTimer.AutoReset = true;
             aTimer.Enabled = true;
         }
+
         private void LeftClick(Object source, ElapsedEventArgs e)
         {
             // Simulate left click
@@ -89,7 +149,7 @@ namespace AutoClicker
                 Thread.Sleep(50);
                 mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
             }
-
+            
             clickCount++;
             if (maxClicks != -1 && clickCount >= maxClicks)
             {
