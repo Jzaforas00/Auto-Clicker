@@ -7,6 +7,8 @@ namespace AutoClicker
     {
         private static System.Timers.Timer aTimer;
         private bool isDoubleClick = false;
+        private int clickCount = 0;
+        private int maxClicks = -1;
         public AutoClicker()
         {
             InitializeComponent();
@@ -45,6 +47,17 @@ namespace AutoClicker
         private void StartClicker()
         {
             int rate = CalculateMsClickRate();
+            
+            clickCount = 0;
+
+            if (rdRepeatIndefinitely.Checked)
+            {
+                maxClicks = -1;  // infinite
+            }
+            else
+            {
+                int.TryParse(fieldRepeatTimes.Text, out maxClicks);
+            }
 
             aTimer = new System.Timers.Timer(rate);
             ChooseMouseButton();
@@ -60,6 +73,12 @@ namespace AutoClicker
                 Thread.Sleep(50);
                 mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
             }
+
+            clickCount++;
+            if (maxClicks != -1 && clickCount >= maxClicks)
+            {
+                btnStop.Invoke(new Action(() => btnStop.PerformClick())); // Stop AutoClicker
+            }
         }
         private void RightClick(Object source, ElapsedEventArgs e)
         {
@@ -69,6 +88,12 @@ namespace AutoClicker
             {
                 Thread.Sleep(50);
                 mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+            }
+
+            clickCount++;
+            if (maxClicks != -1 && clickCount >= maxClicks)
+            {
+                btnStop.Invoke(new Action(() => btnStop.PerformClick())); // Stop AutoClicker
             }
         }
         public int CalculateMsClickRate()

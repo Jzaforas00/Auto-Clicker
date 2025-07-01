@@ -44,7 +44,7 @@
             rdRepeatIndefinitely = new RadioButton();
             rdRepeat = new RadioButton();
             label5 = new Label();
-            numericUpDown1 = new NumericUpDown();
+            fieldRepeatTimes = new NumericUpDown();
             containerClickOptions = new GroupBox();
             comboClickType = new ComboBox();
             comboMouseButton = new ComboBox();
@@ -52,7 +52,7 @@
             label6 = new Label();
             containerClickIntervals.SuspendLayout();
             containerClickRepeat.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)fieldRepeatTimes).BeginInit();
             containerClickOptions.SuspendLayout();
             SuspendLayout();
             // 
@@ -181,7 +181,7 @@
             containerClickRepeat.Controls.Add(rdRepeatIndefinitely);
             containerClickRepeat.Controls.Add(rdRepeat);
             containerClickRepeat.Controls.Add(label5);
-            containerClickRepeat.Controls.Add(numericUpDown1);
+            containerClickRepeat.Controls.Add(fieldRepeatTimes);
             containerClickRepeat.Location = new Point(12, 102);
             containerClickRepeat.Name = "containerClickRepeat";
             containerClickRepeat.Size = new Size(290, 125);
@@ -220,16 +220,16 @@
             label5.TabIndex = 1;
             label5.Text = "repeat";
             // 
-            // numericUpDown1
+            // fieldRepeatTimes
             // 
-            numericUpDown1.Location = new Point(139, 37);
-            numericUpDown1.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDown1.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(71, 27);
-            numericUpDown1.TabIndex = 0;
-            numericUpDown1.TextAlign = HorizontalAlignment.Center;
-            numericUpDown1.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            fieldRepeatTimes.Location = new Point(139, 37);
+            fieldRepeatTimes.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            fieldRepeatTimes.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            fieldRepeatTimes.Name = "fieldRepeatTimes";
+            fieldRepeatTimes.Size = new Size(71, 27);
+            fieldRepeatTimes.TabIndex = 0;
+            fieldRepeatTimes.TextAlign = HorizontalAlignment.Center;
+            fieldRepeatTimes.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // containerClickOptions
             // 
@@ -304,7 +304,7 @@
             containerClickIntervals.PerformLayout();
             containerClickRepeat.ResumeLayout(false);
             containerClickRepeat.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)fieldRepeatTimes).EndInit();
             containerClickOptions.ResumeLayout(false);
             containerClickOptions.PerformLayout();
             ResumeLayout(false);
@@ -329,7 +329,7 @@
         private RadioButton rdRepeatIndefinitely;
         private RadioButton rdRepeat;
         private Label label5;
-        private NumericUpDown numericUpDown1;
+        private NumericUpDown fieldRepeatTimes;
         private Label label6;
         private Label label7;
         private ComboBox comboClickType;
