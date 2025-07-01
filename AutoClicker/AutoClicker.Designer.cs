@@ -88,7 +88,7 @@
             fieldMilisecond.Name = "fieldMilisecond";
             fieldMilisecond.Size = new Size(84, 27);
             fieldMilisecond.TabIndex = 4;
-            fieldMilisecond.Text = "0";
+            fieldMilisecond.Text = "100";
             fieldMilisecond.TextAlign = HorizontalAlignment.Right;
             // 
             // label3

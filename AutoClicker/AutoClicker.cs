@@ -24,7 +24,7 @@ namespace AutoClicker
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            SetTimer();
+            StartClicker();
             ClickerActivated();
         }
         private void btnStop_Click(object sender, EventArgs e)
@@ -41,10 +41,12 @@ namespace AutoClicker
         {
 
         }
-        private static void SetTimer()
+        private void StartClicker()
         {
-            aTimer = new System.Timers.Timer(2000); // 2 seconds
-            aTimer.Elapsed += LeftClick;
+            int rate = CalculateMsClickRate();
+
+            aTimer = new System.Timers.Timer(rate);
+            ChooseMouseButton();
             aTimer.AutoReset = true;
             aTimer.Enabled = true;
         }
@@ -57,6 +59,32 @@ namespace AutoClicker
         {
             // Simulate right click
             mouse_event(MOUSEEVENTF_RIGHTDOWN | MOUSEEVENTF_RIGHTUP, 0, 0, 0, 0);
+        }
+        public int CalculateMsClickRate()
+        {
+            int h, m, s, ms;
+            int.TryParse(fieldHour.Text, out h);
+            int.TryParse(fieldMinut.Text, out m);
+            int.TryParse(fieldSecond.Text, out s);
+            int.TryParse(fieldMilisecond.Text, out ms);
+
+            // Convert to miliseconds and sum:
+            int totalMs = (h * 60 * 60 * 1000) + (m * 60 * 1000) + (s * 1000) + ms;
+
+            return totalMs;
+        }
+
+        public void ChooseMouseButton()
+        {
+            string option = comboMouseButton.SelectedItem.ToString();
+
+            if(option == "Left")
+            {
+                aTimer.Elapsed += LeftClick;
+            }
+            else{
+                aTimer.Elapsed += RightClick;
+            }
         }
 
         public void ClickerActivated()
