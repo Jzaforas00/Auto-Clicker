@@ -7,10 +7,10 @@ Status: In development
 ## Features
 
 - Automates mouse clicks repeatedly. ✅
-- Allows you to set the time interval between clicks (hours, minutes, seconds, milliseconds). ❌
+- Allows you to set the time interval between clicks (hours, minutes, seconds, milliseconds). ✅
 - Can be started/stopped using a **Start/Stop** button or a configurable hotkey (default: **F6**). ❌
 - Option to repeat clicks infinitely until manually stopped, or a specific number of times. ❌
-- Choose between **left** or **right** mouse button. ❌
+- Choose between **left** or **right** mouse button. ✅
 - Option for **single click** or **double click**. ❌
 
 ## Technologies
